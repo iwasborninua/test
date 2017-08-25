@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Advertisements;
+use common\models\User;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -208,6 +210,24 @@ class SiteController extends Controller
 
         return $this->render('resetPassword', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionUsers()
+    {
+        $users = User::find()->all();
+
+        return $this->render('users', [
+            'users' => $users
+        ]);
+    }
+
+    public function actionAdvertisements()
+    {
+        $advertisements = Advertisements::find()->all();
+
+        return $this->render('advertisements', [
+            'advertisements' => $advertisements
         ]);
     }
 }
